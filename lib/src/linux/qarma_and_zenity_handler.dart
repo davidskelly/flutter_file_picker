@@ -50,15 +50,15 @@ class QarmaAndZenityHandler implements DialogHandler {
       case FileType.any:
         return '';
       case FileType.audio:
-        return "Audio Files | ${toCaseInsensitive('*.aac *.midi *.mp3 *.ogg *.wav')}";
+        return "Audio Files | ${toCaseInsensitive(DialogHandler.audioExtensions)}";
       case FileType.custom:
         return '*.${allowedExtensions!.join(' *.')}';
       case FileType.image:
-        return "Image Files | ${toCaseInsensitive('*.bmp *.gif *.jpeg *.jpg *.png')}";
+        return "Image Files | ${toCaseInsensitive(DialogHandler.imageExtensions)}";
       case FileType.media:
-        return "Media Files | ${toCaseInsensitive('*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv *.bmp *.gif *.jpeg *.jpg *.png')}";
+        return "Media Files | ${toCaseInsensitive(DialogHandler.videoExtensions + " " + DialogHandler.imageExtensions)}";
       case FileType.video:
-        return "Video Files | ${toCaseInsensitive('*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv')}";
+        return "Video Files | ${toCaseInsensitive(DialogHandler.videoExtensions)}";
       default:
         throw Exception('unknown file type');
     }
