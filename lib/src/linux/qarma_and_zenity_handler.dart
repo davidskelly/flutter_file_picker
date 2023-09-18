@@ -2,8 +2,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:file_picker/src/linux/dialog_handler.dart';
 import 'package:path/path.dart' as p;
 
-import '../utils.dart';
-
 class QarmaAndZenityHandler implements DialogHandler {
   @override
   List<String> generateCommandLineArguments(
@@ -50,15 +48,15 @@ class QarmaAndZenityHandler implements DialogHandler {
       case FileType.any:
         return '';
       case FileType.audio:
-        return "Audio Files | ${toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.audioExts))}";
+        return "Audio Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.audioExts))}";
       case FileType.custom:
-        return '*.${allowedExtensions!.join(' *.')}';
+        return "Custom Files | ${DialogHandler.toCaseInsensitive('*.${allowedExtensions!.join(' *.')}')}";
       case FileType.image:
-        return "Image Files | ${toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.imageExts))}";
+        return "Image Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.imageExts))}";
       case FileType.media:
-        return "Media Files | ${toCaseInsensitive("${DialogHandler.toExtensions(DialogHandler.videoExts)} ${DialogHandler.toExtensions(DialogHandler.imageExts)}")}";
+        return "Media Files | ${DialogHandler.toCaseInsensitive("${DialogHandler.toExtensions(DialogHandler.videoExts)} ${DialogHandler.toExtensions(DialogHandler.imageExts)}")}";
       case FileType.video:
-        return "Video Files | ${toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts))}";
+        return "Video Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts))}";
       default:
         throw Exception('unknown file type');
     }
@@ -73,13 +71,5 @@ class QarmaAndZenityHandler implements DialogHandler {
         .split('|/')
         .map((String path) => path.startsWith('/') ? path : '/$path')
         .toList();
-  }
-
-  String toCaseInsensitive(String filter) {
-    return filter
-        .split("")
-        .map((e) =>
-            isAlpha(e) ? "[" + e.toLowerCase() + e.toUpperCase() + "]" : e)
-        .join();
   }
 }

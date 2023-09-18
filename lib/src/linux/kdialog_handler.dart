@@ -56,15 +56,15 @@ class KDialogHandler implements DialogHandler {
       case FileType.any:
         return '';
       case FileType.audio:
-        return 'Audio File ($DialogHandler.toExtensions($DialogHandler.audioExtensions))';
+        return 'Audio File (${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.audioExts))})';
       case FileType.custom:
-        return '${allowedExtensions!.map((ext) => ext.toUpperCase()).join(' File, ')} File (*.${allowedExtensions.join(' *.')})';
+        return '${allowedExtensions!.map((ext) => ext.toUpperCase()).join(' File, ')} File (${DialogHandler.toCaseInsensitive("*.${allowedExtensions.join(' *.')}")})';
       case FileType.image:
-        return 'Image File ($DialogHandler.toExtensions($DialogHandler.imageExtension)';
+        return 'Image File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.imageExts)) + ')';
       case FileType.media:
-        return 'Media File ($DialogHandler.toExtensions($DialogHandler.videoExtensions $DialogHandler.toExtensions($DialogHandler.imageExtensions)';
+        return 'Media File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts) + ' ' + DialogHandler.toExtensions(DialogHandler.imageExts)) + ')';
       case FileType.video:
-        return 'Video File ($DialogHandler.toExtensions($DialogHandler.videoExtensions)';
+        return 'Video File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts)) + ')';
       default:
         throw Exception('unknown file type');
     }
