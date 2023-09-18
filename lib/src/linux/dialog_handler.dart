@@ -3,11 +3,18 @@ import 'package:file_picker/src/linux/kdialog_handler.dart';
 import 'package:file_picker/src/linux/qarma_and_zenity_handler.dart';
 
 abstract class DialogHandler {
-  static String imageExtensions = "*.bmp *.gif *.jpeg *.jpg *.png *.webp";
-  static String videoExtensions =
-      "*.avi *.flv *.mkv *.mov *.mp4 *.mpeg *.webm *.wmv";
-  static String audioExtensions =
-      "*.aac *.midi *.mp3 *.ogg *.wav";
+  static List<String> imageExts = ["bmp", "gif", "jpeg", "jpg", "png", "webp"];
+  static List<String> audioExts = ["aac", "midi", "mp3", "ogg", "wav"];
+  static List<String> videoExts = [
+    "avi",
+    "flv",
+    "mkv",
+    "mov",
+    "mp4",
+    "mpeg",
+    "webm",
+    "wmv"
+  ];
 
   factory DialogHandler(String pathToExecutable) {
     pathToExecutable = pathToExecutable.toLowerCase();
@@ -21,6 +28,10 @@ abstract class DialogHandler {
     throw UnimplementedError(
       'DialogHandler for executable $pathToExecutable has not been implemented',
     );
+  }
+
+  static String toExtensions(List<String> extensionList) {
+    return "*.${extensionList.join(" *.")}";
   }
 
   /// Generates the command line arguments to open a dialog with the respective

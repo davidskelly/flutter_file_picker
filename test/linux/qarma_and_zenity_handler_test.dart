@@ -26,13 +26,13 @@ void main() {
       expect(
         dialogHandler.fileTypeToFileFilter(FileType.image, null),
         equals(
-            'Image Files | *.[bB][mM][pP] *.[gG][iI][fF] *.[jJ][pP][eE][gG] *.[jJ][pP][gG] *.[pP][nN][gG]'),
+            'Image Files | *.[bB][mM][pP] *.[gG][iI][fF] *.[jJ][pP][eE][gG] *.[jJ][pP][gG] *.[pP][nN][gG] *.[wW][eE][bB][pP]'),
       );
 
       expect(
         dialogHandler.fileTypeToFileFilter(FileType.media, null),
         equals(
-          'Media Files | *.[aA][vV][iI] *.[fF][lL][vV] *.[mM][kK][vV] *.[mM][oO][vV] *.[mM][pP]4 *.[mM][pP][eE][gG] *.[wW][eE][bB][mM] *.[wW][mM][vV] *.[bB][mM][pP] *.[gG][iI][fF] *.[jJ][pP][eE][gG] *.[jJ][pP][gG] *.[pP][nN][gG]',
+          'Media Files | *.[aA][vV][iI] *.[fF][lL][vV] *.[mM][kK][vV] *.[mM][oO][vV] *.[mM][pP]4 *.[mM][pP][eE][gG] *.[wW][eE][bB][mM] *.[wW][mM][vV] *.[bB][mM][pP] *.[gG][iI][fF] *.[jJ][pP][eE][gG] *.[jJ][pP][gG] *.[pP][nN][gG] *.[wW][eE][bB][pP]',
         ),
       );
 
