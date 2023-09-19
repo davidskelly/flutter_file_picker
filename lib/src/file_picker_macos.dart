@@ -114,9 +114,9 @@ class FilePickerMacOS extends FilePicker {
       case FileType.custom:
         return '"", "${allowedExtensions!.join('", "')}"';
       case FileType.image:
-        return '"bmp", "gif", "jpeg", "jpg", "png"';
+        return '"bmp", "gif", "jpeg", "jpg", "png", "webp"';
       case FileType.media:
-        return '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv", "bmp", "gif", "jpeg", "jpg", "png"';
+        return '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv", "bmp", "gif", "jpeg", "jpg", "png", "webp"';
       case FileType.video:
         return '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv"';
       default:

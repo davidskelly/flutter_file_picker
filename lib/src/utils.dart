@@ -4,6 +4,19 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart';
 
+List<String> imageExts = ["bmp", "gif", "jpeg", "jpg", "png", "webp"];
+List<String> audioExts = ["aac", "midi", "mp3", "ogg", "wav"];
+List<String> videoExts = [
+  "avi",
+  "flv",
+  "mkv",
+  "mov",
+  "mp4",
+  "mpeg",
+  "webm",
+  "wmv"
+];
+
 Future<List<PlatformFile>> filePathsToPlatformFiles(
   List<String> filePaths,
   bool withReadStream,

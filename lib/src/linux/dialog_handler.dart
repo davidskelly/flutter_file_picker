@@ -5,19 +5,6 @@ import 'package:file_picker/src/linux/qarma_and_zenity_handler.dart';
 import '../utils.dart';
 
 abstract class DialogHandler {
-  static List<String> imageExts = ["bmp", "gif", "jpeg", "jpg", "png", "webp"];
-  static List<String> audioExts = ["aac", "midi", "mp3", "ogg", "wav"];
-  static List<String> videoExts = [
-    "avi",
-    "flv",
-    "mkv",
-    "mov",
-    "mp4",
-    "mpeg",
-    "webm",
-    "wmv"
-  ];
-
   factory DialogHandler(String pathToExecutable) {
     pathToExecutable = pathToExecutable.toLowerCase();
 

@@ -2,6 +2,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:file_picker/src/linux/dialog_handler.dart';
 import 'package:path/path.dart' as p;
 
+import '../utils.dart';
+
 class KDialogHandler implements DialogHandler {
   @override
   List<String> generateCommandLineArguments(
@@ -56,15 +58,15 @@ class KDialogHandler implements DialogHandler {
       case FileType.any:
         return '';
       case FileType.audio:
-        return 'Audio File (${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.audioExts))})';
+        return 'Audio File (${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(audioExts))})';
       case FileType.custom:
         return '${allowedExtensions!.map((ext) => ext.toUpperCase()).join(' File, ')} File (${DialogHandler.toCaseInsensitive("*.${allowedExtensions.join(' *.')}")})';
       case FileType.image:
-        return 'Image File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.imageExts)) + ')';
+        return 'Image File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(imageExts)) + ')';
       case FileType.media:
-        return 'Media File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts) + ' ' + DialogHandler.toExtensions(DialogHandler.imageExts)) + ')';
+        return 'Media File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(videoExts) + ' ' + DialogHandler.toExtensions(imageExts)) + ')';
       case FileType.video:
-        return 'Video File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts)) + ')';
+        return 'Video File (' + DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(videoExts)) + ')';
       default:
         throw Exception('unknown file type');
     }

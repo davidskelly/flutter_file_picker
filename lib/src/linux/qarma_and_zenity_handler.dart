@@ -2,6 +2,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:file_picker/src/linux/dialog_handler.dart';
 import 'package:path/path.dart' as p;
 
+import '../utils.dart';
+
 class QarmaAndZenityHandler implements DialogHandler {
   @override
   List<String> generateCommandLineArguments(
@@ -48,15 +50,15 @@ class QarmaAndZenityHandler implements DialogHandler {
       case FileType.any:
         return '';
       case FileType.audio:
-        return "Audio Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.audioExts))}";
+        return "Audio Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(audioExts))}";
       case FileType.custom:
         return "Custom Files | ${DialogHandler.toCaseInsensitive('*.${allowedExtensions!.join(' *.')}')}";
       case FileType.image:
-        return "Image Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.imageExts))}";
+        return "Image Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(imageExts))}";
       case FileType.media:
-        return "Media Files | ${DialogHandler.toCaseInsensitive("${DialogHandler.toExtensions(DialogHandler.videoExts)} ${DialogHandler.toExtensions(DialogHandler.imageExts)}")}";
+        return "Media Files | ${DialogHandler.toCaseInsensitive("${DialogHandler.toExtensions(videoExts)} ${DialogHandler.toExtensions(imageExts)}")}";
       case FileType.video:
-        return "Video Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(DialogHandler.videoExts))}";
+        return "Video Files | ${DialogHandler.toCaseInsensitive(DialogHandler.toExtensions(videoExts))}";
       default:
         throw Exception('unknown file type');
     }
