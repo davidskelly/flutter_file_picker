@@ -212,20 +212,28 @@ class FilePickerWindows extends FilePicker {
   String fileTypeToFileFilter(FileType type, List<String>? allowedExtensions) {
     switch (type) {
       case FileType.any:
-        return 'All Files (*.*)\x00*.*\x00\x00';
+        return toExtensions("All Files", ["*"]);
       case FileType.audio:
-        return 'Audios (*.aac,*.midi,*.mp3,*.ogg,*.wav)\x00*.aac;*.midi;*.mp3;*.ogg;*.wav\x00\x00';
+        return toExtensions("Audios", audioExts);
       case FileType.custom:
-        return 'Files (*.${allowedExtensions!.join(',*.')})\x00*.${allowedExtensions.join(';*.')}\x00\x00';
+        return toExtensions("Files", allowedExtensions!);
       case FileType.image:
-        return 'Images (*.bmp,*.gif,*.jpeg,*.jpg,*.png,*.webp)\x00*.bmp;*.gif;*.jpeg;*.jpg;*.png;*.webp\x00\x00';
+        return toExtensions("Images", imageExts);
       case FileType.media:
-        return 'Media (*.avi,*.flv,*.mkv,*.mov,*.mp4,*.mpeg,*.webm,*.wmv)\x00*.avi;*.flv;*.mkv;*.mov;*.mp4;*.mpeg;*.webm;*.wmv\x00Images (*.bmp,*.gif,*.jpeg,*.jpg,*.png,*.webp)\x00*.bmp;*.gif;*.jpeg;*.jpg;*.png;*.webp\x00\x00';
+        return toExtensions("Media", videoExts, terminator: false) +
+            toExtensions("Images", imageExts);
       case FileType.video:
-        return 'Videos (*.avi,*.flv,*.mkv,*.mov,*.mp4,*.mpeg,*.webm,*.wmv)\x00*.avi;*.flv;*.mkv;*.mov;*.mp4;*.mpeg;*.webm;*.wmv\x00\x00';
+        return toExtensions("Videos", videoExts);
       default:
         throw Exception('unknown file type');
     }
+  }
+
+  String toExtensions(String title, List<String> extensionList,
+      {bool terminator = true}) {
+    return title +
+        ' (*.${extensionList.join(',*.')})\x00*.${extensionList.join(';*.')}\x00' +
+        (terminator ? "\x00" : "");
   }
 
   validateFileName(String fileName) {
