@@ -4,7 +4,7 @@ import 'dart:typed_data';
 import 'package:file_picker/file_picker.dart';
 import 'package:path/path.dart';
 
-List<String> imageExts = ["bmp", "gif", "jpeg", "jpg", "png", "webp"];
+List<String> imageExts = ["bmp", "gif", "jpeg", "jpg", "png", "webp", "heic"];
 List<String> audioExts = ["aac", "midi", "mp3", "ogg", "wav"];
 List<String> videoExts = [
   "avi",
