@@ -110,15 +110,17 @@ class FilePickerMacOS extends FilePicker {
       case FileType.any:
         return '';
       case FileType.audio:
-        return '"aac", "midi", "mp3", "ogg", "wav"';
+        return toExtensions(audioExts);
       case FileType.custom:
-        return '"", "${allowedExtensions!.join('", "')}"';
+        var withEmpty = List<String>.from(allowedExtensions!);
+        withEmpty.insert(0, "");
+        return toExtensions(withEmpty);
       case FileType.image:
-        return '"bmp", "gif", "jpeg", "jpg", "png", "webp"';
+        return toExtensions(imageExts);
       case FileType.media:
-        return '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv", "bmp", "gif", "jpeg", "jpg", "png", "webp"';
+        return "${toExtensions(videoExts)}, ${toExtensions(imageExts)}";
       case FileType.video:
-        return '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv"';
+        return toExtensions(videoExts);
       default:
         throw Exception('unknown file type');
     }
@@ -202,5 +204,9 @@ class FilePickerMacOS extends FilePicker {
       final volumeName = pathElements[0];
       return ['/Volumes', volumeName, ...pathElements.sublist(1)].join('/');
     }).toList();
+  }
+
+  static String toExtensions(List<String> extensionList) {
+    return '"${extensionList.join('", "')}"';
   }
 }

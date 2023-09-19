@@ -21,13 +21,13 @@ void main() {
 
       expect(
         picker.fileTypeToFileFilter(FileType.image, null),
-        equals('"bmp", "gif", "jpeg", "jpg", "png"'),
+        equals('"bmp", "gif", "jpeg", "jpg", "png", "webp"'),
       );
 
       expect(
         picker.fileTypeToFileFilter(FileType.media, null),
         equals(
-          '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv", "bmp", "gif", "jpeg", "jpg", "png"',
+          '"avi", "flv", "mkv", "mov", "mp4", "mpeg", "webm", "wmv", "bmp", "gif", "jpeg", "jpg", "png", "webp"',
         ),
       );
 
