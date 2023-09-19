@@ -118,7 +118,9 @@ class FilePickerMacOS extends FilePicker {
       case FileType.image:
         return toExtensions(imageExts);
       case FileType.media:
-        return "${toExtensions(videoExts)}, ${toExtensions(imageExts)}";
+        var media = List<String>.from(videoExts);
+        media.addAll(imageExts);
+        return toExtensions(media);
       case FileType.video:
         return toExtensions(videoExts);
       default:
